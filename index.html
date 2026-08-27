@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Co-banking | Banco AV Villas</title>
+    <link rel="icon" href="./assets/logo.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lilita+One&family=Outfit:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body class="page-login">
+    <div class="hero-bg" aria-hidden="true">
+      <img src="./assets/bg-red.svg" alt="" />
+    </div>
+
+    <header class="topbar">
+      <p>Juntos trabajando</p>
+    </header>
+
+    <main class="layout">
+      <article class="card promo promo-tall">
+        <div class="scene scene-rentabilidad">
+          <div class="sky"></div>
+          <div class="sun"></div>
+          <div class="hill back"></div>
+          <div class="hill front"></div>
+          <div class="town">
+            <div class="house h1"></div>
+            <div class="house h2"></div>
+            <div class="church">
+              <div class="nave"></div>
+              <div class="tower"></div>
+              <div class="spire"></div>
+            </div>
+            <div class="house h3"></div>
+            <div class="tree t1"></div>
+            <div class="tree t2"></div>
+          </div>
+          <div class="balloon b1">
+            <span>%</span>
+            <i></i>
+          </div>
+          <div class="balloon b2">
+            <span>%</span>
+            <i></i>
+          </div>
+          <h2>Eleva tu<br />Rentabilidad</h2>
+        </div>
+        <div class="promo-copy">
+          <h3>Con un CDT o un Bolsillo con Rentabilidad</h3>
+          <p>
+            Ábrelos en línea y recibe tus rendimientos en tu Cuenta de Ahorros
+            AV Villas
+          </p>
+        </div>
+      </article>
+
+      <div class="promo-stack">
+        <article class="card promo promo-breb">
+          <div class="scene scene-breb">
+            <p class="breb-logo" aria-label="Bre-B">Bre-B</p>
+            <img class="person-img" src="./assets/person.svg" alt="" />
+          </div>
+          <div class="promo-copy">
+            <h3>Pasa o recibe plata desde Bre-B</h3>
+            <p>Hazlo fácil y de forma inmediata a través de tus llaves</p>
+            <a class="more" href="./pages/ayuda.html">
+              Conoce más
+              <svg viewBox="0 0 16 16" aria-hidden="true">
+                <path
+                  d="M3 8h8M8 3l5 5-5 5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="card promo promo-nomina">
+          <div class="scene scene-nomina">
+            <div class="crowd" aria-hidden="true">
+              <span class="p p1"></span>
+              <span class="p p2"></span>
+              <span class="p p3"></span>
+              <span class="p p4"></span>
+            </div>
+            <div class="confetti" aria-hidden="true"></div>
+            <p class="pagaron">¡PAGARON!</p>
+          </div>
+          <div class="promo-copy">
+            <h3>Trae tu nómina a AV Villas</h3>
+            <p>
+              y recibe tu salario en una Cuenta con beneficios y condiciones
+              exclusivas.
+            </p>
+          </div>
+        </article>
+      </div>
+
+      <section class="card login-card" aria-labelledby="login-title">
+        <a class="brand" href="./index.html" aria-label="AV Villas">
+          <svg viewBox="0 0 36 30" aria-hidden="true">
+            <path
+              fill="#fff"
+              d="M2.4 16.2C9.8 13 16.2 6.2 21.4.6c.4 5.2-1.3 9.6-4.2 13.2 6.8.3 13.6 3.7 19.4 8.9-7.5-1.6-13.8.1-18.3 3.6 1.8 3.4 4.1 8.4 5 13.2-4.7-5.9-11.1-10.7-17.7-12.8 3.2-1.8 4.8-4.1-3.2-10.5z"
+            />
+          </svg>
+          <span>AV Villas</span>
+        </a>
+
+        <h1 id="login-title">Ingresa a tu Co-banking</h1>
+
+        <form id="login-form" novalidate>
+          <div class="field field-select" data-field="docType">
+            <button
+              type="button"
+              class="select-trigger"
+              id="doc-type-btn"
+              aria-haspopup="listbox"
+              aria-expanded="false"
+              aria-labelledby="doc-type-label doc-type-value"
+            >
+              <span class="select-text">
+                <span class="floating" id="doc-type-label">Tipo de documento</span>
+                <span class="value" id="doc-type-value">Cédula de Ciudadanía</span>
+              </span>
+              <svg class="chevron" viewBox="0 0 20 20" aria-hidden="true">
+                <path
+                  d="M5 7.5 10 12.5 15 7.5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+            <ul class="select-menu" id="doc-type-menu" role="listbox" hidden>
+              <li role="option" aria-selected="true" data-value="CC">
+                Cédula de Ciudadanía
+              </li>
+              <li role="option" data-value="CE">Cédula de Extranjería</li>
+              <li role="option" data-value="NIT">NIT</li>
+              <li role="option" data-value="PA">Pasaporte</li>
+              <li role="option" data-value="TI">Tarjeta de Identidad</li>
+              <li role="option" data-value="PEP">PEP</li>
+            </ul>
+            <input type="hidden" name="docType" id="docType" value="CC" />
+          </div>
+
+          <label class="field">
+            <input
+              type="text"
+              name="docNumber"
+              id="docNumber"
+              inputmode="numeric"
+              autocomplete="username"
+              maxlength="12"
+              placeholder="Número de documento"
+              required
+            />
+          </label>
+
+          <label class="field">
+            <input
+              type="password"
+              name="password"
+              id="password"
+              autocomplete="current-password"
+              maxlength="12"
+              placeholder="Ingresa tu contraseña"
+              required
+            />
+          </label>
+
+          <p class="form-error" id="form-error" hidden></p>
+
+          <button class="btn-enter" type="submit">INGRESAR</button>
+        </form>
+
+        <a class="link-row" href="./pages/recuperar.html">
+          <svg viewBox="0 0 20 20" aria-hidden="true">
+            <rect
+              x="4"
+              y="9"
+              width="12"
+              height="8"
+              rx="2"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+            />
+            <path
+              d="M6.5 9V7a3.5 3.5 0 0 1 7 0v2"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+            />
+          </svg>
+          Olvidé mi contraseña
+        </a>
+
+        <p class="muted-line">
+          ¿Aún no tienes contraseña para ingresar?
+          <a href="./pages/registro.html">Regístrate</a>
+        </p>
+
+        <a class="help-link" href="./pages/ayuda.html"
+          >¿Tienes problemas para ingresar?</a
+        >
+      </section>
+    </main>
+
+    <script type="module" src="./js/login.js"></script>
+  </body>
+</html>
