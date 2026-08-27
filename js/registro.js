@@ -41,7 +41,8 @@ form.addEventListener("submit", (event) => {
     successEl.textContent = "Tu registro quedó listo. Ya puedes ingresar a Co-banking.";
     successEl.classList.add("show");
     form.reset();
-    document.querySelector(".value").textContent = "Cédula de Ciudadanía";
+    const display = document.querySelector(".select-display");
+    if (display) display.value = "";
     document.getElementById("docType").value = "CC";
     setTimeout(() => {
       window.location.href = "../index.html";

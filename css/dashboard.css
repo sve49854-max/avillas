@@ -23,13 +23,11 @@
 }
 
 .dash-header .brand {
-  font-size: 18px;
-  padding: 6px 16px 6px 12px;
+  padding: 0;
 }
 
-.dash-header .brand svg {
-  width: 22px;
-  height: 18px;
+.dash-header .brand-img {
+  height: 40px;
 }
 
 .user-box {

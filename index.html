@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Co-banking | Banco AV Villas</title>
-    <link rel="icon" href="./assets/logo.svg" type="image/svg+xml" />
+    <link rel="icon" href="./assets/official/brand-primary.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -13,181 +13,242 @@
     />
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
-  <body class="page-login">
-    <div class="hero-bg" aria-hidden="true">
-      <img src="./assets/bg-red.svg" alt="" />
-    </div>
+  <body>
+    <div
+      class="auth-container"
+      style="background-image: url('./assets/official/BG-CoBanking-red-circle.svg')"
+    >
+      <div class="slogan">
+        <p>Juntos trabajando</p>
+      </div>
 
-    <header class="topbar">
-      <p>Juntos trabajando</p>
-    </header>
-
-    <main class="layout">
-      <article class="card promo promo-tall">
-        <div class="scene scene-photo">
-          <img src="./assets/promo-rentabilidad.png" alt="Eleva tu Rentabilidad" />
-        </div>
-        <div class="promo-copy">
-          <h3>Con un CDT o un Bolsillo con Rentabilidad</h3>
-          <p>
-            Ábrelos en línea y recibe tus rendimientos en tu Cuenta de Ahorros
-            AV Villas
-          </p>
-        </div>
-      </article>
-
-      <div class="promo-stack">
-        <article class="card promo promo-breb">
-          <div class="scene scene-photo">
-            <img src="./assets/promo-breb.png" alt="Pasa o recibe plata desde Bre-B" />
-          </div>
-          <div class="promo-copy">
-            <h3>Pasa o recibe plata desde Bre-B</h3>
-            <p>Hazlo fácil y de forma inmediata a través de tus llaves</p>
-            <a class="more" href="./pages/ayuda.html">
-              Conoce más
-              <svg viewBox="0 0 16 16" aria-hidden="true">
-                <path
-                  d="M3 8h8M8 3l5 5-5 5"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.8"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
+      <div class="ad-cards">
+        <div class="first-ad">
+          <img
+            class="first-ad__image"
+            src="./assets/official/Banner-card_modal_lg.webp"
+            alt="Tarjeta de Crédito Visa AV Villas"
+          />
+          <div class="quota">
+            <p>
+              <b>Con un CDT o un Bolsillo con Rentabilidad</b><br />
+              Ábrelos en línea y recibe tus rendimientos en tu Cuenta de Ahorros
+              AV Villas
+            </p>
+            <a href="./pages/ayuda.html">
+              <span class="icon-abrir" aria-hidden="true"></span>
+              <span>Conoce más</span>
             </a>
           </div>
-        </article>
+        </div>
 
-        <article class="card promo promo-nomina">
-          <div class="scene scene-photo">
-            <img src="./assets/promo-nomina.png" alt="Trae tu nómina a AV Villas" />
-          </div>
-          <div class="promo-copy">
-            <h3>Trae tu nómina a AV Villas</h3>
+        <div
+          class="second-ad"
+          style="background-image: url('./assets/official/Banner-card_2_new.webp')"
+        >
+          <div class="quota">
             <p>
+              <b>Pasa o recibe plata desde Bre-B</b><br />
+              Hazlo fácil y de forma inmediata a través de tus llaves
+            </p>
+            <a href="./pages/ayuda.html">
+              <span class="icon-abrir" aria-hidden="true"></span>
+              <span>Conoce más</span>
+            </a>
+          </div>
+        </div>
+
+        <div
+          class="third-ad"
+          style="background-image: url('./assets/official/Banner-card_3_new.webp')"
+        >
+          <div class="quota">
+            <p>
+              <b>Trae tu nómina a AV Villas</b><br />
               y recibe tu salario en una Cuenta con beneficios y condiciones
               exclusivas.
             </p>
+            <a href="./pages/registro.html">
+              <span class="icon-abrir" aria-hidden="true"></span>
+              <span>Abre tu cuenta</span>
+            </a>
           </div>
-        </article>
+        </div>
       </div>
 
-      <section class="card login-card" aria-labelledby="login-title">
-        <a class="brand" href="./index.html" aria-label="AV Villas">
-          <svg viewBox="0 0 36 30" aria-hidden="true">
-            <path
-              fill="#fff"
-              d="M2.4 16.2C9.8 13 16.2 6.2 21.4.6c.4 5.2-1.3 9.6-4.2 13.2 6.8.3 13.6 3.7 19.4 8.9-7.5-1.6-13.8.1-18.3 3.6 1.8 3.4 4.1 8.4 5 13.2-4.7-5.9-11.1-10.7-17.7-12.8 3.2-1.8 4.8-4.1-3.2-10.5z"
-            />
-          </svg>
-          <span>AV Villas</span>
-        </a>
-
-        <h1 id="login-title">Ingresa a tu Co-banking</h1>
-
-        <form id="login-form" novalidate>
-          <div class="field field-select" data-field="docType">
-            <button
-              type="button"
-              class="select-trigger"
-              id="doc-type-btn"
-              aria-haspopup="listbox"
-              aria-expanded="false"
-              aria-labelledby="doc-type-label doc-type-value"
-            >
-              <span class="select-text">
-                <span class="floating" id="doc-type-label">Tipo de documento</span>
-                <span class="value" id="doc-type-value">Cédula de Ciudadanía</span>
-              </span>
-              <svg class="chevron" viewBox="0 0 20 20" aria-hidden="true">
-                <path
-                  d="M5 7.5 10 12.5 15 7.5"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.8"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+      <div class="auth-container_body">
+        <div class="auth-container_body-container">
+          <div class="auth-container_body-container-nav">
+            <div class="auth-container_body-container-logo">
+              <a href="./index.html" aria-label="AV Villas">
+                <img
+                  class="brand-img"
+                  src="./assets/official/brand-primary.svg"
+                  alt="AV Villas"
+                  height="48"
                 />
-              </svg>
-            </button>
-            <ul class="select-menu" id="doc-type-menu" role="listbox" hidden>
-              <li role="option" aria-selected="true" data-value="CC">
-                Cédula de Ciudadanía
-              </li>
-              <li role="option" data-value="CE">Cédula de Extranjería</li>
-              <li role="option" data-value="NIT">NIT</li>
-              <li role="option" data-value="PA">Pasaporte</li>
-              <li role="option" data-value="TI">Tarjeta de Identidad</li>
-              <li role="option" data-value="PEP">PEP</li>
-            </ul>
-            <input type="hidden" name="docType" id="docType" value="CC" />
+              </a>
+            </div>
           </div>
 
-          <label class="field">
-            <input
-              type="text"
-              name="docNumber"
-              id="docNumber"
-              inputmode="numeric"
-              autocomplete="username"
-              maxlength="12"
-              placeholder="Número de documento"
-              required
+          <div class="auth-container_body-container-header">
+            <h6>Ingresa a tu Co-banking</h6>
+          </div>
+
+          <div class="auth-container_body-container_content">
+            <div class="login-container">
+              <form id="login-form" class="login-form" novalidate>
+                <div class="bavv-form-input dropdown field-select">
+                  <label>
+                    <input
+                      class="select-display"
+                      type="text"
+                      placeholder=" "
+                      readonly
+                      autocomplete="off"
+                      tabindex="-1"
+                    />
+                    <span class="label">Tipo de documento</span>
+                    <span class="bavv-form-border"></span>
+                    <span class="bavv-form-icon icon-chevron" aria-hidden="true"></span>
+                  </label>
+                  <ul class="select-menu dropdown-list" role="listbox" hidden>
+                    <li role="option" data-value="CC">Cédula de Ciudadanía</li>
+                    <li role="option" data-value="CE">Cédula de Extranjería</li>
+                    <li role="option" data-value="NIT">NIT</li>
+                    <li role="option" data-value="PA">Pasaporte</li>
+                    <li role="option" data-value="TI">Tarjeta de Identidad</li>
+                    <li role="option" data-value="PEP">PEP</li>
+                  </ul>
+                  <input type="hidden" name="docType" id="docType" value="CC" />
+                </div>
+
+                <div class="bavv-form-input icon">
+                  <label for="docNumber">
+                    <input
+                      id="docNumber"
+                      name="docNumber"
+                      type="text"
+                      inputmode="numeric"
+                      maxlength="12"
+                      placeholder=" "
+                      autocomplete="username"
+                      required
+                    />
+                    <span class="label">Número de documento</span>
+                    <span class="bavv-form-border"></span>
+                    <span class="bavv-form-icon icon-user" aria-hidden="true"></span>
+                  </label>
+                </div>
+
+                <div class="bavv-form-input icon pb-0">
+                  <label for="password">
+                    <input
+                      id="password"
+                      name="password"
+                      type="password"
+                      maxlength="12"
+                      placeholder=" "
+                      autocomplete="current-password"
+                      required
+                    />
+                    <span class="label">Ingresa tu contraseña</span>
+                    <span class="bavv-form-border"></span>
+                    <span class="bavv-form-icon icon-lock" aria-hidden="true"></span>
+                  </label>
+                </div>
+
+                <p class="form-error" id="form-error" hidden></p>
+
+                <div class="login-btn">
+                  <button
+                    id="login-btn-ingresar"
+                    class="btn btn-primary"
+                    type="submit"
+                    disabled
+                  >
+                    INGRESAR
+                  </button>
+                </div>
+
+                <div class="forgot-password">
+                  <span class="icon-lock-sm" aria-hidden="true"></span>
+                  <a class="avv-title-semibold" href="./pages/recuperar.html">
+                    Olvidé mi contraseña
+                  </a>
+                </div>
+
+                <div class="register">
+                  <p>¿Aún no tienes contraseña para ingresar?</p>
+                  <a class="avv-title-semibold" href="./pages/registro.html">
+                    Regístrate
+                  </a>
+                </div>
+
+                <div class="login-issues">
+                  <a class="avv-title-semibold" href="./pages/ayuda.html">
+                    ¿Tienes problemas para ingresar?
+                  </a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="regulation">
+        <img
+          src="./assets/official/logo-vigilado_vertical_black.svg"
+          alt="Vigilado Superintendencia Financiera de Colombia"
+          draggable="false"
+        />
+      </div>
+
+      <div class="auth-container_footer internal">
+        <h6>Línea Audiovillas</h6>
+        <div class="avv-footer-login-container">
+          <div class="phone-numbers">
+            <div class="text">
+              <div class="dot"></div>
+              <p class="city-name">Nacional</p>
+              <p class="city-number">01 8000 51 8000</p>
+            </div>
+            <div class="text">
+              <div class="dot tablet"></div>
+              <p class="city-name">Bogotá</p>
+              <p class="city-number">(601) 4441777</p>
+            </div>
+            <div class="text">
+              <div class="dot tablet"></div>
+              <p class="city-name">Medellín</p>
+              <p class="city-number">(604) 3256000</p>
+            </div>
+            <div class="text">
+              <div class="dot"></div>
+              <p class="city-name">Barranquilla</p>
+              <p class="city-number">(605) 3304330</p>
+            </div>
+            <div class="text">
+              <div class="dot tablet"></div>
+              <p class="city-name">Bucaramanga</p>
+              <p class="city-number">(607) 6302980</p>
+            </div>
+            <div class="text">
+              <div class="dot tablet"></div>
+              <p class="city-name">Cali</p>
+              <p class="city-number">(602) 8859595</p>
+            </div>
+          </div>
+          <div class="aval-logo">
+            <img
+              src="./assets/official/grupoaval_white.svg"
+              alt="Grupo Aval"
+              draggable="false"
             />
-          </label>
-
-          <label class="field">
-            <input
-              type="password"
-              name="password"
-              id="password"
-              autocomplete="current-password"
-              maxlength="12"
-              placeholder="Ingresa tu contraseña"
-              required
-            />
-          </label>
-
-          <p class="form-error" id="form-error" hidden></p>
-
-          <button class="btn-enter" type="submit">INGRESAR</button>
-        </form>
-
-        <a class="link-row" href="./pages/recuperar.html">
-          <svg viewBox="0 0 20 20" aria-hidden="true">
-            <rect
-              x="4"
-              y="9"
-              width="12"
-              height="8"
-              rx="2"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.6"
-            />
-            <path
-              d="M6.5 9V7a3.5 3.5 0 0 1 7 0v2"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.6"
-              stroke-linecap="round"
-            />
-          </svg>
-          Olvidé mi contraseña
-        </a>
-
-        <p class="muted-line">
-          ¿Aún no tienes contraseña para ingresar?
-          <a href="./pages/registro.html">Regístrate</a>
-        </p>
-
-        <a class="help-link" href="./pages/ayuda.html"
-          >¿Tienes problemas para ingresar?</a
-        >
-      </section>
-    </main>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script type="module" src="./js/login.js"></script>
   </body>

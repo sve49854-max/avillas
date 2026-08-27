@@ -10,7 +10,7 @@ export default defineConfig({
     port: Number(process.env.PORT) || 5173,
     allowedHosts: true,
     watch: {
-      ignored: ["**/assets/ref/**"],
+      ignored: ["**/assets/ref/**", "**/assets/shots/**"],
     },
   },
   preview: {

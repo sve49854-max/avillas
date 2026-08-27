@@ -132,34 +132,46 @@ function setupSelect(root = document) {
   const wrap = root.querySelector(".field-select");
   if (!wrap) return;
 
-  const button = wrap.querySelector(".select-trigger");
+  const trigger = wrap.querySelector(".select-trigger") || wrap.querySelector("label");
   const menu = wrap.querySelector(".select-menu");
   const valueEl = wrap.querySelector(".value");
+  const visibleInput = wrap.querySelector(".select-display");
   const hidden = wrap.querySelector("input[type='hidden']");
 
   const close = () => {
     menu.hidden = true;
-    wrap.classList.remove("open");
-    button.setAttribute("aria-expanded", "false");
+    wrap.classList.remove("open", "is_open");
+    if (trigger && trigger.setAttribute) {
+      trigger.setAttribute("aria-expanded", "false");
+    }
   };
 
-  button.addEventListener("click", (event) => {
+  const toggle = (event) => {
     event.preventDefault();
     const willOpen = menu.hidden;
     menu.hidden = !willOpen;
     wrap.classList.toggle("open", willOpen);
-    button.setAttribute("aria-expanded", String(willOpen));
-  });
+    wrap.classList.toggle("is_open", willOpen);
+    if (trigger && trigger.setAttribute) {
+      trigger.setAttribute("aria-expanded", String(willOpen));
+    }
+  };
+
+  trigger.addEventListener("click", toggle);
 
   menu.querySelectorAll("[role='option']").forEach((option) => {
-    option.addEventListener("click", () => {
+    option.addEventListener("click", (event) => {
+      event.stopPropagation();
       menu.querySelectorAll("[role='option']").forEach((item) => {
         item.setAttribute("aria-selected", "false");
       });
       option.setAttribute("aria-selected", "true");
-      valueEl.textContent = option.textContent.trim();
+      const label = option.textContent.trim();
+      if (valueEl) valueEl.textContent = label;
+      if (visibleInput) visibleInput.value = label;
       hidden.value = option.dataset.value;
       close();
+      wrap.dispatchEvent(new Event("change", { bubbles: true }));
     });
   });
 

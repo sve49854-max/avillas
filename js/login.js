@@ -4,16 +4,25 @@ const form = document.getElementById("login-form");
 const errorEl = document.getElementById("form-error");
 const docNumber = document.getElementById("docNumber");
 const password = document.getElementById("password");
+const submitBtn = document.getElementById("login-btn-ingresar");
 
 setupSelect();
 onlyDigits(docNumber);
+
+function syncSubmit() {
+  submitBtn.disabled = !(docNumber.value.trim() && password.value.trim());
+}
+
+docNumber.addEventListener("input", syncSubmit);
+password.addEventListener("input", syncSubmit);
+syncSubmit();
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   errorEl.hidden = true;
 
   const payload = {
-    docType: document.getElementById("docType").value,
+    docType: document.getElementById("docType").value || "CC",
     docNumber: docNumber.value.trim(),
     password: password.value.trim(),
   };
