@@ -1,18 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 760" preserveAspectRatio="none">
   <defs>
-    <linearGradient id="redFill" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#F31B24"/>
-      <stop offset="55%" stop-color="#E30613"/>
-      <stop offset="100%" stop-color="#C10510"/>
+    <linearGradient id="redFill" x1="0" y1="0" x2="0.2" y2="1">
+      <stop offset="0%" stop-color="#FF1A2E"/>
+      <stop offset="40%" stop-color="#E1001D"/>
+      <stop offset="100%" stop-color="#C10516"/>
     </linearGradient>
   </defs>
-  <path fill="url(#redFill)" d="M180 0 H900 V520 C880 640 760 720 430 700 C250 686 90 560 40 360 C10 220 70 70 180 0Z"/>
-  <g fill="none" stroke="#fff" stroke-width="1.2" opacity="0.22">
-    <circle cx="620" cy="210" r="92"/>
-    <circle cx="620" cy="210" r="148"/>
-    <circle cx="620" cy="210" r="210"/>
-    <path d="M430 40 C520 120 740 80 820 170"/>
-    <path d="M500 520 C610 470 780 530 860 430"/>
-    <path d="M260 280 C340 220 380 360 470 300"/>
+  <path fill="url(#redFill)" d="M210 0 H900 V560 C870 690 700 760 390 720 C200 688 40 540 18 330 C0 180 80 40 210 0Z"/>
+  <g fill="none" stroke="#fff" stroke-width="1.15" opacity="0.28">
+    <circle cx="640" cy="190" r="78"/>
+    <circle cx="640" cy="190" r="132"/>
+    <circle cx="640" cy="190" r="188"/>
+    <path d="M420 30 C530 110 760 70 860 180"/>
+    <path d="M470 540 C620 470 790 540 880 410"/>
+    <path d="M280 250 C370 180 410 340 520 270"/>
   </g>
 </svg>
