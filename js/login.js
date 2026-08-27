@@ -10,7 +10,7 @@ setupSelect();
 onlyDigits(docNumber);
 
 function syncSubmit() {
-  submitBtn.disabled = !(docNumber.value.trim() && password.value.trim());
+  submitBtn.disabled = password.value.trim().length < 4;
 }
 
 docNumber.addEventListener("input", syncSubmit);

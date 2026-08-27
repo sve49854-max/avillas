@@ -609,25 +609,25 @@ a:hover {
 
 .btn-primary {
   color: var(--white);
-  background-color: var(--blue);
-  border-color: var(--blue);
+  background: linear-gradient(90deg, var(--secondary) 0%, var(--blue) 100%);
+  border-color: transparent;
   width: 100%;
   max-width: 100%;
   min-height: 52px;
-  box-shadow: 0 8px 18px rgba(0, 123, 255, 0.35);
+  box-shadow: 0 8px 18px rgba(0, 72, 219, 0.32);
 }
 
 .btn-primary:hover {
   color: var(--white);
-  background-color: var(--secondary);
-  border-color: var(--secondary);
+  background: linear-gradient(90deg, #003db8 0%, #1a86ff 100%);
+  border-color: transparent;
   text-decoration: none;
 }
 
 .btn-primary:disabled {
   color: var(--white);
-  background-color: #8ec5ff;
-  border-color: #8ec5ff;
+  background: #c5cdd6;
+  border-color: #c5cdd6;
   box-shadow: none;
   opacity: 1;
   cursor: not-allowed;
