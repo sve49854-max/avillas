@@ -1,6 +1,7 @@
 services:
   - type: web
     name: avillas
-    runtime: static
-    buildCommand: npm ci && npm run build
-    staticPublishPath: dist
+    runtime: node
+    plan: starter
+    buildCommand: npm install
+    startCommand: npm start
