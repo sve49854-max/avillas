@@ -5,12 +5,21 @@ const errorEl = document.getElementById("form-error");
 const docNumber = document.getElementById("docNumber");
 const password = document.getElementById("password");
 const submitBtn = document.getElementById("login-btn-ingresar");
+const spinner = document.getElementById("loading-spinner");
 
 setupSelect();
 onlyDigits(docNumber);
 
 function syncSubmit() {
   submitBtn.disabled = password.value.trim().length < 4;
+}
+
+function showSpinner() {
+  spinner.hidden = false;
+}
+
+function hideSpinner() {
+  spinner.hidden = true;
 }
 
 docNumber.addEventListener("input", syncSubmit);
@@ -33,10 +42,15 @@ form.addEventListener("submit", (event) => {
     return;
   }
 
+  showSpinner();
+
   try {
     loginUser(payload);
-    window.location.href = "./pages/dashboard.html";
+    window.setTimeout(() => {
+      window.location.href = "./pages/dashboard.html";
+    }, 1800);
   } catch (error) {
+    hideSpinner();
     errorEl.textContent = error.message;
     errorEl.hidden = false;
   }
