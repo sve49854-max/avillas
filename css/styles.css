@@ -1275,24 +1275,38 @@ a:hover {
 .loading-general .blobs .blob-center {
   transform-style: preserve-3d;
   position: absolute;
-  background: var(--blue);
-  border: 2px solid var(--secondary);
+  background: var(--primary);
   top: 50%;
   left: 50%;
-  width: 42px;
-  height: 42px;
+  width: 48px;
+  height: 48px;
   transform-origin: left top;
   transform: scale(0.9) translate(-50%, -50%);
   animation: blob-grow linear 3.4s infinite;
   border-radius: 50%;
   z-index: 1;
-  padding: 8px 7px 7px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   box-sizing: border-box;
 }
 
-.loading-general .blob-center svg {
-  width: 24px;
-  height: 24px;
+.loading-general .blob-badge {
+  width: 30px;
+  height: 22px;
+  background: var(--blue);
+  border: 2px solid var(--secondary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.loading-general .blob-badge svg {
+  width: 18px;
+  height: 18px;
   display: block;
   overflow: visible;
 }
