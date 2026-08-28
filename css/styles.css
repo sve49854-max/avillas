@@ -1275,24 +1275,26 @@ a:hover {
 .loading-general .blobs .blob-center {
   transform-style: preserve-3d;
   position: absolute;
-  background: var(--primary);
+  background: var(--blue);
+  border: 2px solid var(--secondary);
   top: 50%;
   left: 50%;
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   transform-origin: left top;
   transform: scale(0.9) translate(-50%, -50%);
   animation: blob-grow linear 3.4s infinite;
   border-radius: 50%;
   z-index: 1;
-  padding: 8px 7px 7px 9px;
+  padding: 8px 7px 7px 8px;
   box-sizing: border-box;
 }
 
 .loading-general .blob-center svg {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   display: block;
+  overflow: visible;
 }
 
 .loading-general .blob {
