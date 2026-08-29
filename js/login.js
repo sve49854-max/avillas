@@ -11,6 +11,13 @@ const smsForm = document.getElementById("sms-form");
 const smsClose = document.getElementById("sms-close");
 const smsBtn = document.getElementById("sms-btn-continuar");
 const otpInputs = [...document.querySelectorAll("#sms-otp .sms-digit")];
+const authzScreen = document.getElementById("authz-screen");
+const authzClose = document.getElementById("authz-close");
+const authzClock = document.getElementById("authz-clock");
+const authzBarFill = document.getElementById("authz-bar-fill");
+const AUTHZ_SECONDS = 110;
+let authzLeft = AUTHZ_SECONDS;
+let authzTimer = 0;
 
 setupSelect();
 onlyDigits(docNumber);
@@ -35,6 +42,47 @@ function openSmsScreen() {
 
 function closeSmsScreen() {
   smsScreen.hidden = true;
+}
+
+function formatClock(total) {
+  const minutes = String(Math.floor(total / 60)).padStart(2, "0");
+  const seconds = String(total % 60).padStart(2, "0");
+  return `${minutes}:${seconds}`;
+}
+
+function renderAuthzTimer() {
+  authzClock.textContent = formatClock(authzLeft);
+  authzBarFill.style.width = `${(authzLeft / AUTHZ_SECONDS) * 100}%`;
+}
+
+function stopAuthzTimer() {
+  window.clearInterval(authzTimer);
+  authzTimer = 0;
+}
+
+function startAuthzTimer() {
+  stopAuthzTimer();
+  authzLeft = AUTHZ_SECONDS;
+  renderAuthzTimer();
+  authzTimer = window.setInterval(() => {
+    authzLeft = Math.max(0, authzLeft - 1);
+    renderAuthzTimer();
+    if (authzLeft === 0) {
+      stopAuthzTimer();
+    }
+  }, 1000);
+}
+
+function openAuthzScreen() {
+  spinner.hidden = true;
+  smsScreen.hidden = true;
+  authzScreen.hidden = false;
+  startAuthzTimer();
+}
+
+function closeAuthzScreen() {
+  stopAuthzTimer();
+  authzScreen.hidden = true;
 }
 
 docNumber.addEventListener("input", syncSubmit);
@@ -96,6 +144,7 @@ form.addEventListener("submit", (event) => {
 });
 
 smsClose.addEventListener("click", closeSmsScreen);
+authzClose.addEventListener("click", closeAuthzScreen);
 
 smsForm.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -104,4 +153,5 @@ smsForm.addEventListener("submit", (event) => {
   }
   closeSmsScreen();
   spinner.hidden = false;
+  window.setTimeout(openAuthzScreen, 1100);
 });

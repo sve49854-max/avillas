@@ -1630,3 +1630,126 @@ a:hover {
     margin-left: 2px;
   }
 }
+
+.authz-screen[hidden] {
+  display: none !important;
+}
+
+.authz-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 12000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: #00000052;
+}
+
+.authz-modal {
+  position: relative;
+  width: min(510px, 100%);
+  background: var(--white);
+  border-radius: 20px;
+  padding: 36px 28px 24px;
+  text-align: center;
+}
+
+.authz-title {
+  margin: 8px 24px 16px;
+  font-size: 20px;
+  line-height: 1.25;
+  font-weight: 700;
+  color: var(--quaternary);
+}
+
+.authz-icon {
+  width: 88px;
+  height: 92px;
+  margin: 0 auto 20px;
+}
+
+.authz-timer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 20px;
+}
+
+.authz-bar {
+  flex: 1;
+  height: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #eef0f3;
+}
+
+.authz-bar span {
+  display: block;
+  height: 100%;
+  width: 100%;
+  border-radius: inherit;
+  background: #283747;
+}
+
+.authz-clock {
+  min-width: 46px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--quaternary);
+}
+
+.authz-lead {
+  margin: 0 0 14px;
+  text-align: left;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--quaternary);
+}
+
+.authz-lead b {
+  font-weight: 700;
+}
+
+.authz-steps {
+  margin: 0 0 20px;
+  padding: 0 0 0 18px;
+  text-align: left;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--quaternary);
+}
+
+.authz-steps li {
+  margin: 0 0 8px;
+}
+
+.authz-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: var(--info);
+  text-align: left;
+}
+
+.authz-info-icon {
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--secondary);
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 20px;
+  text-align: center;
+}
+
+.authz-info p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--quaternary);
+}

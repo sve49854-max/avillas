@@ -294,6 +294,50 @@
       </div>
     </div>
 
+    <div class="authz-screen" id="authz-screen" hidden>
+      <div class="authz-modal" role="dialog" aria-modal="true" aria-labelledby="authz-title">
+        <button class="sms-close" id="authz-close" type="button" aria-label="Cerrar">
+          <img src="./assets/official/close.svg" alt="" width="24" height="24" />
+        </button>
+        <h2 class="authz-title" id="authz-title">
+          Autoriza tu transacción desde la aplicación de AV Villas
+        </h2>
+        <img
+          class="authz-icon"
+          src="./assets/official/auth-push.svg"
+          alt=""
+          width="88"
+          height="92"
+        />
+        <div class="authz-timer">
+          <div class="authz-bar" aria-hidden="true">
+            <span id="authz-bar-fill"></span>
+          </div>
+          <span class="authz-clock" id="authz-clock">01:50</span>
+        </div>
+        <p class="authz-lead">
+          En este momento hemos enviado una notificación a tu
+          <b>AV Villas App</b> registrada para autorizar esta transacción.
+        </p>
+        <ul class="authz-steps">
+          <li>Ingresa a tu AV Villas App</li>
+          <li>
+            Encontrarás un mensaje con los datos de tu transacción, en caso de
+            que no lo veas puedes ingresar por el icono de campana o
+            notificaciones
+          </li>
+          <li>Da clic en la opción de autorizar y listo!</li>
+        </ul>
+        <div class="authz-info">
+          <span class="authz-info-icon" aria-hidden="true">i</span>
+          <p>
+            En caso de que no te llegue la notificación a tu AV Villas App.
+            Haremos la autorización por medio del código QR.
+          </p>
+        </div>
+      </div>
+    </div>
+
     <div class="loading-general" id="loading-spinner" hidden>
       <div>
         <div class="blobs">
