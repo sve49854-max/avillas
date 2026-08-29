@@ -27,7 +27,7 @@ form.addEventListener("submit", (event) => {
     successEl.textContent = "Contraseña actualizada. Te llevamos al ingreso.";
     successEl.classList.add("show");
     setTimeout(() => {
-      window.location.href = "../index.html";
+      window.location.href = "../login.html";
     }, 900);
   } catch (error) {
     errorEl.textContent = error.message;

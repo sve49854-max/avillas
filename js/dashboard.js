@@ -9,7 +9,7 @@ document.getElementById("user-avatar").textContent = firstName.charAt(0).toUpper
 
 document.getElementById("logout").addEventListener("click", () => {
   logout();
-  window.location.href = "../index.html";
+  window.location.href = "../login.html";
 });
 
 const toast = document.getElementById("toast");

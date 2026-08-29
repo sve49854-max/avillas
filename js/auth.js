@@ -111,7 +111,7 @@ function logout() {
 function requireSession() {
   const session = getSession();
   if (!session) {
-    window.location.href = new URL("../index.html", window.location.href).href;
+    window.location.href = new URL("../login.html", window.location.href).href;
   }
   return session;
 }

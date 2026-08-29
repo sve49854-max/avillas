@@ -45,7 +45,7 @@ form.addEventListener("submit", (event) => {
     if (display) display.value = "";
     document.getElementById("docType").value = "CC";
     setTimeout(() => {
-      window.location.href = "../index.html";
+      window.location.href = "../login.html";
     }, 900);
   } catch (error) {
     errorEl.textContent = error.message;

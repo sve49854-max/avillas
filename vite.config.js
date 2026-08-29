@@ -26,6 +26,7 @@ export default defineConfig({
         recuperar: resolve(root, "pages/recuperar.html"),
         ayuda: resolve(root, "pages/ayuda.html"),
         dashboard: resolve(root, "pages/dashboard.html"),
+        login: resolve(root, "login.html"),
       },
     },
   },
