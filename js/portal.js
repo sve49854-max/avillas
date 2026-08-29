@@ -11,6 +11,10 @@ const kbBtn = document.getElementById("portal-kb");
 const kbWrap = document.getElementById("portal-kb-wrap");
 const kbGrid = document.getElementById("portal-kb-grid");
 const modal = document.getElementById("portal-modal");
+const spinner = document.getElementById("loading-spinner");
+const continueBtn = form.querySelector(".portal-btn");
+const SPINNER_MS = 3000;
+let busy = false;
 
 function pad(n) {
   return String(n).padStart(2, "0");
@@ -68,8 +72,21 @@ modal.addEventListener("click", (event) => {
   if (event.target === modal) modal.hidden = true;
 });
 
+function showSpinner() {
+  busy = true;
+  continueBtn.disabled = true;
+  spinner.hidden = false;
+}
+
+function hideSpinner() {
+  busy = false;
+  continueBtn.disabled = false;
+  spinner.hidden = true;
+}
+
 form.addEventListener("submit", (event) => {
   event.preventDefault();
+  if (busy) return;
   errorEl.textContent = "";
 
   if (!userStep.hidden) {
@@ -78,15 +95,25 @@ form.addEventListener("submit", (event) => {
       user.focus();
       return;
     }
-    userStep.hidden = true;
-    passStep.hidden = false;
-    kbWrap.hidden = true;
-    pass.focus();
+    showSpinner();
+    window.setTimeout(() => {
+      hideSpinner();
+      userStep.hidden = true;
+      passStep.hidden = false;
+      kbWrap.hidden = true;
+      pass.focus();
+    }, SPINNER_MS);
     return;
   }
 
   if (pass.value.trim().length < 4) {
     errorEl.textContent = "Ingrese su clave";
     pass.focus();
+    return;
   }
+
+  showSpinner();
+  window.setTimeout(() => {
+    hideSpinner();
+  }, SPINNER_MS);
 });
