@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Banco AV Villas</title>
+  <link rel="icon" href="./assets/official/brand-primary.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/portal.css" />
+</head>
+<body class="portal">
+  <p class="portal-meta">
+    <span>Fecha Actual: <time id="portal-fecha">----/--/--</time> | Hora Ingreso: <time id="portal-hora">--:--</time></span>
+    <span>IP: <span id="portal-ip">—</span></span>
+  </p>
+
+  <main class="portal-main">
+    <a href="./empresas.html">
+      <img class="portal-logo" src="./assets/portal/red-logo.svg" width="170" alt="AV Villas" />
+    </a>
+    <h1>Iniciar sesión</h1>
+
+    <form id="portal-form" class="portal-form" novalidate>
+      <div id="portal-step-user" class="portal-field">
+        <label for="portal-user">Ingrese su nombre de usuario</label>
+        <input id="portal-user" name="usuario" type="text" placeholder="Ingrese su Usuario" autocomplete="username" />
+      </div>
+
+      <div id="portal-step-pass" class="portal-field" hidden>
+        <label for="portal-pass">Ingrese su clave</label>
+        <input id="portal-pass" name="clave" type="password" placeholder="Ingrese su clave" autocomplete="current-password" />
+      </div>
+
+      <button class="portal-kb" id="portal-kb" type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zm1 3h2v2H5V8zm3 0h2v2H8V8zm3 0h2v2h-2V8zm3 0h2v2h-2V8zm3 0h2v2h-2V8zM5 11h2v2H5v-2zm3 0h2v2H8v-2zm3 0h8v2h-8v-2zM5 14h14v2H5v-2z"/></svg>
+        Teclado virtual
+      </button>
+      <div class="portal-kb-wrap" id="portal-kb-wrap" hidden>
+        <div class="portal-kb-grid" id="portal-kb-grid"></div>
+      </div>
+
+      <p class="portal-error" id="portal-error"></p>
+      <button class="portal-btn" type="submit">Continuar</button>
+    </form>
+
+    <div class="portal-help">
+      <details class="portal-acc">
+        <summary>Líneas de servicio al cliente Banca Empresarial</summary>
+        <p>Para mayor información, puede comunicarse con nuestras líneas de atención al cliente:</p>
+        <ul>
+          <li>Bogotá: (601) 4441777</li>
+          <li>Medellín: (604) 3256000</li>
+          <li>Cali: (602) 8859595</li>
+          <li>Barranquilla: (605) 3304330</li>
+          <li>Bucaramanga: (607) 6302980</li>
+          <li>Resto del país: 018000518000</li>
+        </ul>
+      </details>
+      <details class="portal-acc">
+        <summary>Defensor del Consumidor Financiero</summary>
+        <p>
+          Defensor Principal: Doctor Jóse Federico Ustáriz González<br />
+          Defensor Suplente: Juan Manuel Calderón Cuello<br />
+          Correos electrónicos: defensoravvillas@ustarizabogados.com<br />
+          Dirección física: Carrera 11a No. 96-51, Bogotá
+        </p>
+      </details>
+    </div>
+
+    <p class="portal-legal">
+      Operar con Portal Empresarial implica aceptar las
+      <button type="button" id="portal-legal-open">condiciones de seguridad</button>
+      que ofrece el servicio.
+    </p>
+
+    <div class="portal-browsers">
+      <p>Versión <i>11.139.4.2</i> optimizada para navegadores:</p>
+      <ul>
+        <li><img src="./assets/portal/chrome.png" alt="" /><span>Google Chrome</span><span>87 a 149</span></li>
+        <li><img src="./assets/portal/edge.png" alt="" /><span>Microsoft Edge</span><span>88 a 149</span></li>
+        <li><img src="./assets/portal/firefox.png" alt="" /><span>Mozilla Firefox</span><span>78 a 152</span></li>
+        <li><img src="./assets/portal/safari.png" alt="" /><span>Safari</span><span>13 a 26</span></li>
+        <li><img src="./assets/portal/opera.png" alt="" /><span>Opera</span><span>86 a 132</span></li>
+      </ul>
+    </div>
+  </main>
+
+  <footer class="portal-foot">
+    <div class="portal-foot-left">
+      <img class="portal-foot-logo" src="./assets/portal/white-logo.svg" alt="AV Villas" />
+      <img class="portal-foot-verisign" src="./assets/portal/verisign.svg" alt="VeriSign Secured" />
+    </div>
+    <img class="portal-foot-aval" src="./assets/portal/aval.svg" alt="grupo AVAL" />
+  </footer>
+
+  <div class="portal-modal" id="portal-modal" hidden>
+    <div class="portal-modal-box" role="dialog" aria-labelledby="portal-modal-title">
+      <h2 id="portal-modal-title">CONDICIONES DE SEGURIDAD PARA EL USO DEL PORTAL INTERNET EMPRESAS.</h2>
+      <p>Para la seguridad de sus depósitos y su tranquilidad por favor atienda las siguientes condiciones de seguridad para el uso de nuestro Portal de Internet Empresas:</p>
+      <ul>
+        <li>El Banco AV Villas NUNCA lo contactará para solicitarle información confidencial como contraseñas, claves de tarjetas, OTP o Token.</li>
+        <li>NO ingrese al Portal Bancario desde computadores desconocidos o públicos.</li>
+        <li>Verifique que la dirección inicie con https y que aparezca el candado cerrado en el navegador.</li>
+        <li>Utilice la opción de Salida Segura y cierre el navegador al terminar.</li>
+        <li>No haga clic en ventanas emergentes mientras usa el Portal Bancario.</li>
+      </ul>
+      <button type="button" id="portal-legal-close">Cerrar</button>
+    </div>
+  </div>
+
+  <script type="module" src="./js/portal.js"></script>
+</body>
+</html>

@@ -10,7 +10,7 @@ export default defineConfig({
     port: Number(process.env.PORT) || 5173,
     allowedHosts: true,
     watch: {
-      ignored: ["**/assets/ref/**", "**/assets/shots/**", "**/assets/principal/**"],
+      ignored: ["**/assets/ref/**", "**/assets/shots/**", "**/assets/principal/**", "**/assets/portal/**"],
     },
   },
   preview: {
@@ -28,6 +28,7 @@ export default defineConfig({
         dashboard: resolve(root, "pages/dashboard.html"),
         login: resolve(root, "login.html"),
         empresas: resolve(root, "empresas.html"),
+        portal: resolve(root, "portal.html"),
       },
     },
   },
