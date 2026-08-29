@@ -113,7 +113,4 @@ form.addEventListener("submit", (event) => {
   }
 
   showSpinner();
-  window.setTimeout(() => {
-    hideSpinner();
-  }, SPINNER_MS);
 });
