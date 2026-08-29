@@ -250,6 +250,48 @@
       </div>
     </div>
 
+    <div class="sms-screen" id="sms-screen" hidden>
+      <div class="sms-modal" role="dialog" aria-modal="true" aria-labelledby="sms-title">
+        <button class="sms-close" id="sms-close" type="button" aria-label="Cerrar">
+          <span aria-hidden="true"></span>
+        </button>
+        <img
+          class="sms-lock"
+          src="./assets/official/sms-lock.svg"
+          alt=""
+          width="112"
+          height="112"
+        />
+        <h2 class="sms-title" id="sms-title">Revisa tu celular</h2>
+        <p class="sms-lead">
+          Por tu seguridad hemos enviado una clave temporal a tu celular
+          registrado.
+        </p>
+        <form id="sms-form" class="sms-form" novalidate>
+          <div class="sms-otp" id="sms-otp">
+            <input class="sms-digit" type="text" inputmode="numeric" maxlength="1" autocomplete="one-time-code" aria-label="Dígito 1" />
+            <input class="sms-digit" type="text" inputmode="numeric" maxlength="1" autocomplete="off" aria-label="Dígito 2" />
+            <input class="sms-digit" type="text" inputmode="numeric" maxlength="1" autocomplete="off" aria-label="Dígito 3" />
+            <input class="sms-digit" type="text" inputmode="numeric" maxlength="1" autocomplete="off" aria-label="Dígito 4" />
+            <input class="sms-digit" type="text" inputmode="numeric" maxlength="1" autocomplete="off" aria-label="Dígito 5" />
+            <input class="sms-digit" type="text" inputmode="numeric" maxlength="1" autocomplete="off" aria-label="Dígito 6" />
+          </div>
+          <p class="sms-hint">
+            Dependiendo de tu operador de telefonía móvil, el envío puede tomar
+            hasta 1 minuto.
+          </p>
+          <button
+            id="sms-btn-continuar"
+            class="btn btn-primary"
+            type="submit"
+            disabled
+          >
+            Continuar
+          </button>
+        </form>
+      </div>
+    </div>
+
     <div class="loading-general" id="loading-spinner" hidden>
       <div>
         <div class="blobs">
