@@ -27,6 +27,7 @@ export default defineConfig({
         ayuda: resolve(root, "pages/ayuda.html"),
         dashboard: resolve(root, "pages/dashboard.html"),
         login: resolve(root, "login.html"),
+        empresas: resolve(root, "empresas.html"),
       },
     },
   },
