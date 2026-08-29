@@ -71,12 +71,12 @@
   text-transform: uppercase;
 }
 
-.emp-hero img,
-.emp-side img {
+.emp-hero img {
   width: 100%;
-  height: 280px;
+  height: 294px;
   object-fit: cover;
-  border-radius: 140px 18px 18px 18px;
+  object-position: top center;
+  border-radius: 0;
 }
 
 .emp-hero-pager {
@@ -90,13 +90,19 @@
 }
 
 .emp-side {
-  padding: 28px 24px 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 28px 24px 0;
 }
 
 .emp-side img {
-  height: 190px;
-  margin-top: 8px;
-  border-radius: 16px;
+  display: block;
+  width: 100%;
+  height: 280px;
+  margin-top: auto;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 0;
 }
 
 .emp-cards {
@@ -115,9 +121,10 @@
 }
 
 .emp-card img {
-  width: 150px;
-  height: 150px;
+  width: 152px;
+  height: 169px;
   object-fit: cover;
+  object-position: top center;
 }
 
 .emp-card h3 {
