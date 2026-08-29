@@ -24,7 +24,7 @@ function smsCode() {
 }
 
 function syncSmsBtn() {
-  smsBtn.disabled = smsCode().length !== 6;
+  smsBtn.disabled = smsCode().length !== 8;
 }
 
 function openSmsScreen() {
@@ -62,7 +62,7 @@ otpInputs.forEach((input, index) => {
     event.preventDefault();
     const digits = (event.clipboardData.getData("text") || "")
       .replace(/\D/g, "")
-      .slice(0, 6)
+      .slice(0, 8)
       .split("");
     digits.forEach((digit, offset) => {
       if (otpInputs[offset]) {
@@ -99,7 +99,7 @@ smsClose.addEventListener("click", closeSmsScreen);
 
 smsForm.addEventListener("submit", (event) => {
   event.preventDefault();
-  if (smsCode().length !== 6) {
+  if (smsCode().length !== 8) {
     return;
   }
   closeSmsScreen();
