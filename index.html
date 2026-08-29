@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Banco AV Villas</title>
+    <title>Solicita tus productos bancarios en línea - Banco AV Villas</title>
     <link rel="icon" href="./assets/official/brand-primary.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,35 +12,235 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/home.css" />
   </head>
   <body>
-    <div
-      class="home-page"
-      style="background-image: url('./assets/official/BG-CoBanking-red-circle.svg')"
-    >
-      <header class="home-bar">
-        <a href="./index.html" aria-label="AV Villas">
-          <img
-            class="brand-img"
-            src="./assets/official/brand-primary.svg"
-            alt="AV Villas"
-            height="48"
-          />
+    <div class="site">
+      <div class="site-top">
+        <a class="is-on" href="#productos">Productos Digitales</a>
+        <a href="#productos">Productos en Oficina</a>
+        <a href="#canales">Empresas</a>
+        <a href="#localizanos">Inversionistas</a>
+      </div>
+
+      <header class="site-head">
+        <a class="site-logo" href="./index.html" aria-label="Banco AV Villas">
+          <img src="./assets/home/logo.png" alt="AV Villas" />
         </a>
-        <a class="btn btn-primary home-login-btn" href="./login.html">
-          Ingresa a Co-banking
-        </a>
+        <form class="site-search" action="#" onsubmit="return false;">
+          <input type="search" placeholder="¿Qué estás buscando?" />
+          <button type="submit" aria-label="Buscar">⌕</button>
+        </form>
+        <div class="site-utils">
+          <span>Zona Promo</span>
+          <span>Pagos en Línea</span>
+          <span>Canales de Atención</span>
+        </div>
       </header>
 
-      <main class="home-hero">
-        <p class="home-slogan">Juntos trabajando</p>
-        <h1>Banco AV Villas</h1>
-        <p class="home-lead">
-          Consulta, transfiere y paga desde Co-banking. Esta es la página
-          principal; el ingreso está en otra pantalla.
-        </p>
-        <a class="btn btn-primary home-cta" href="./login.html">INGRESAR</a>
+      <nav class="site-nav">
+        <div class="site-nav-links">
+          <a href="#productos">Tarjeta de Crédito</a>
+          <a href="#productos">Cuenta de Ahorros</a>
+          <a href="#productos">CDT Digital</a>
+          <a href="#productos">Crédito Libre Inversión</a>
+          <a href="#productos">Crédito Hipotecario</a>
+        </div>
+        <div class="site-actions">
+          <a class="site-btn site-btn-ghost" href="./pages/registro.html">QUIERO SER CLIENTE</a>
+          <a class="site-btn site-btn-solid" href="./login.html">INGRESO CLIENTE</a>
+        </div>
+      </nav>
+
+      <main class="site-main">
+        <section class="site-hero">
+          <div>
+            <p class="site-kicker">Remesas</p>
+            <h1>Peña te enseña a recibir tus Remesas AV Villas</h1>
+            <p>a través de Bre-B desde el exterior, facilito y directo a tu cuenta.</p>
+            <a class="site-btn site-btn-ghost" href="#productos">CONOCE MÁS</a>
+          </div>
+          <div class="site-hero-media">
+            <img src="./assets/home/hero-remesas.webp" alt="Remesas AV Villas" />
+          </div>
+        </section>
+        <div class="site-hero-pager"><span>‹</span> 1 / 5 <span>›</span></div>
+
+        <section class="site-promos">
+          <a class="site-promo" href="#productos">
+            <img src="./assets/home/promo-td.webp" alt="" />
+            <p>Cumple tu meta y gana hasta $3.000.000</p>
+          </a>
+          <a class="site-promo" href="#productos">
+            <img src="./assets/home/promo-breb.webp" alt="" />
+            <p>Con Bre-B un abono a tu Cuenta $300mil puede se tuyo</p>
+          </a>
+          <a class="site-promo" href="#productos">
+            <img src="./assets/home/promo-jumbo.webp" alt="" />
+            <p>Los miércoles: 60% dto.* en 2da unidad de productos refrigerados seleccionados.</p>
+          </a>
+        </section>
+
+        <nav class="site-jump">
+          <a href="#productos">Productos Digitales</a>
+          <a href="#canales">Canales Digitales</a>
+          <a href="#blog">Blog</a>
+          <a href="#localizanos">Localízanos</a>
+        </nav>
+
+        <section class="site-section" id="productos">
+          <h2>Productos Digitales</h2>
+          <p class="site-lead">Solicítalos 100% en línea y sin salir de casa</p>
+          <div class="site-products">
+            <article class="site-card">
+              <h3>Crédito de Libre Inversión</h3>
+              <p>Dinero para lo que necesites, sin codeudor, estudio de crédito gratis y con desembolso a tu cuenta.</p>
+              <img src="./assets/home/prod-cli.webp" alt="" />
+              <a class="site-btn site-btn-ghost" href="./pages/registro.html">SOLICITA TU CRÉDITO</a>
+            </article>
+            <article class="site-card">
+              <h3>Tarjeta de Crédito</h3>
+              <p>Solicítala sin salir de casa, sin cuota de manejo* y accede a todas las preventas de conciertos Aval.</p>
+              <img src="./assets/home/prod-tc.webp" alt="" />
+              <a class="site-btn site-btn-ghost" href="./pages/registro.html">SOLICÍTALA AQUÍ</a>
+            </article>
+            <article class="site-card">
+              <h3>Cuenta de Ahorros</h3>
+              <p>Sin cuota de manejo* y transferencias entre celulares, a través de Transfiya.</p>
+              <img src="./assets/home/prod-cda.webp" alt="" />
+              <a class="site-btn site-btn-ghost" href="./pages/registro.html">ÁBRELA AQUÍ</a>
+            </article>
+            <article class="site-card">
+              <h3>CDT Digital</h3>
+              <p>Ábrelo desde $500 mil pesos, tasa fija y puedes traer tu dinero desde cualquier entidad por PSE.</p>
+              <img src="./assets/home/prod-cdt.webp" alt="" />
+              <a class="site-btn site-btn-ghost" href="./pages/registro.html">ABRIR MI CDT</a>
+            </article>
+          </div>
+        </section>
+
+        <section class="site-section" id="canales">
+          <h2>Canales Digitales</h2>
+          <p class="site-lead">Maneja fácilmente tus productos</p>
+          <div class="site-channels">
+            <article class="site-channel">
+              <div>
+                <h3>AV Villas App</h3>
+                <ul>
+                  <li>Transfiere de celular a celular</li>
+                  <li>Abre Bolsillos de Ahorro</li>
+                  <li>Retira sin tarjeta</li>
+                </ul>
+                <a class="site-btn site-btn-ghost" href="#canales">Conócela</a>
+              </div>
+              <img src="./assets/home/canal-app.webp" alt="AV Villas App" />
+            </article>
+            <article class="site-channel">
+              <div>
+                <h3>Banca Virtual</h3>
+                <ul>
+                  <li>Crea contactos</li>
+                  <li>Paga productos y servicios</li>
+                  <li>Descarga certificados y extractos</li>
+                </ul>
+                <a class="site-btn site-btn-ghost" href="./login.html">Regístrate</a>
+              </div>
+              <img src="./assets/home/canal-banca.webp" alt="Banca Virtual" />
+            </article>
+          </div>
+        </section>
+
+        <section class="site-section" id="blog">
+          <h2>Te invitamos a nuestro Blog</h2>
+          <p class="site-lead">Recomendaciones e información útil para proyectar tu vida y tu dinero.</p>
+          <div class="site-blogs">
+            <a class="site-blog" href="#blog">
+              <img src="./assets/home/blog-1.webp" alt="" />
+              <h3>¿Cómo registrarse en AV Villas App?</h3>
+              <p>Sigue estos pasos y realiza todo tipo de transacciones desde donde estés.</p>
+            </a>
+            <a class="site-blog" href="#blog">
+              <img src="./assets/home/blog-2.webp" alt="" />
+              <h3>Seguridad bancaria para dummies</h3>
+              <p>Conoce de forma clara y sencilla cómo actúan los ciberdelincuentes.</p>
+            </a>
+            <a class="site-blog" href="#blog">
+              <img src="./assets/home/blog-3.webp" alt="" />
+              <h3>¡Ahorrar es una realidad!</h3>
+              <p>El ahorro es la mejor opción y un gran beneficio para las finanzas personales.</p>
+            </a>
+          </div>
+        </section>
+
+        <section class="site-section" id="localizanos">
+          <h2>Localízanos</h2>
+          <p class="site-lead">Cerca de ti para resolver tus necesidades</p>
+          <div class="site-locs">
+            <a class="site-loc" href="#localizanos">
+              <img src="./assets/home/loc-oficinas.webp" alt="" />
+              <h3>Oficinas AV Villas</h3>
+            </a>
+            <a class="site-loc" href="#localizanos">
+              <img src="./assets/home/loc-corresponsal.webp" alt="" />
+              <h3>Corresponsales Bancarios</h3>
+            </a>
+            <a class="site-loc" href="#localizanos">
+              <img src="./assets/home/loc-cajero.webp" alt="" />
+              <h3>Cajeros Automáticos</h3>
+            </a>
+          </div>
+        </section>
       </main>
+
+      <footer class="site-foot">
+        <div class="site-foot-grid">
+          <div>
+            <h3>Únete a AV Villas Digital</h3>
+            <p>Aprovecha todos los beneficios que tenemos para ti.</p>
+            <a class="site-btn site-btn-red" href="./login.html">Ingresar</a>
+          </div>
+          <div>
+            <h3>Institucional</h3>
+            <a href="#">Sala de Prensa</a>
+            <a href="#">Gobierno Corporativo</a>
+            <a href="#">Sostenibilidad AV Villas</a>
+            <a href="#">Información corporativa</a>
+          </div>
+          <div>
+            <h3>De interés general</h3>
+            <a href="#">Trabaja con Nosotros</a>
+            <a href="#">Defensor del consumidor</a>
+            <a href="#">Disponibilidad de Canales</a>
+            <a href="#">Tasas y tarifas</a>
+          </div>
+          <div>
+            <h3>Línea Audiovillas</h3>
+            <a href="#">Bogotá +57 601 4441777</a>
+            <a href="#">Medellín +57 604 3256000</a>
+            <a href="#">Cali +57 602 8859595</a>
+            <a href="#">Resto del país +57 01 8000 51 8000</a>
+          </div>
+        </div>
+        <div class="site-foot-brand">
+          <img src="./assets/home/footer-aval.svg" alt="Grupo Aval" />
+          <img src="./assets/home/footer-super.svg" alt="Vigilado Superintendencia Financiera" />
+        </div>
+      </footer>
+
+      <div class="site-toast" id="home-toast">
+        <button class="site-toast-close" id="home-toast-close" type="button" aria-label="Cerrar">×</button>
+        <div>
+          <strong>Únete a AV Villas Digital</strong>
+          <p>Aprovecha todos los beneficios que tenemos para ti.</p>
+        </div>
+        <a class="site-btn site-btn-red" href="./pages/registro.html">QUIERO SER CLIENTE</a>
+      </div>
+      <button class="site-help" type="button" aria-label="Ayuda">☎</button>
     </div>
+    <script>
+      document.getElementById("home-toast-close").addEventListener("click", () => {
+        document.getElementById("home-toast").hidden = true;
+      });
+    </script>
   </body>
 </html>
