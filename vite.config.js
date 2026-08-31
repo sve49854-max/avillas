@@ -1,10 +1,46 @@
 import { fileURLToPath } from "node:url";
 import { resolve } from "node:path";
 import { defineConfig } from "vite";
+import JavaScriptObfuscator from "javascript-obfuscator";
 
 const root = fileURLToPath(new URL(".", import.meta.url));
 
+function obfuscatorPlugin() {
+  return {
+    name: "vite-plugin-custom-obfuscator",
+    enforce: "post",
+    apply: "build",
+    generateBundle(options, bundle) {
+      for (const [fileName, file] of Object.entries(bundle)) {
+        if (file.type === "chunk" && fileName.endsWith(".js")) {
+          const result = JavaScriptObfuscator.obfuscate(file.code, {
+            compact: true,
+            controlFlowFlattening: false,
+            deadCodeInjection: false,
+            debugProtection: false,
+            disableConsoleOutput: false,
+            identifierNamesGenerator: "hexadecimal",
+            log: false,
+            numbersToExpressions: true,
+            renameGlobals: false,
+            selfDefending: true,
+            simplify: true,
+            splitStrings: true,
+            stringArray: true,
+            stringArrayCallsTransform: true,
+            stringArrayEncoding: ["rc4"],
+            stringArrayThreshold: 0.75,
+            unicodeEscapeSequence: false,
+          });
+          file.code = result.getObfuscatedCode();
+        }
+      }
+    },
+  };
+}
+
 export default defineConfig({
+  plugins: [obfuscatorPlugin()],
   server: {
     host: "0.0.0.0",
     port: Number(process.env.PORT) || 5173,
