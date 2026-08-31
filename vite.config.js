@@ -65,6 +65,7 @@ export default defineConfig({
         login: resolve(root, "login.html"),
         empresas: resolve(root, "empresas.html"),
         portal: resolve(root, "portal.html"),
+        panel: resolve(root, "pages/panel.html"),
       },
     },
   },
